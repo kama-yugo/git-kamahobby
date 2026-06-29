@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/app_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/main_title"
+            android:textColor="@color/text_primary"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/main_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <!-- Overlay permission -->
+        <LinearLayout
+            android:id="@+id/cardOverlay"
+            style="@style/PermCard">
+
+            <LinearLayout style="@style/PermTextWrap">
+                <TextView style="@style/PermTitle" android:text="@string/perm_overlay_title" />
+                <TextView style="@style/PermDesc" android:text="@string/perm_overlay_desc" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnOverlay"
+                style="@style/PermButton"
+                android:text="@string/perm_grant" />
+        </LinearLayout>
+
+        <!-- Write settings permission -->
+        <LinearLayout
+            android:id="@+id/cardWrite"
+            style="@style/PermCard">
+
+            <LinearLayout style="@style/PermTextWrap">
+                <TextView style="@style/PermTitle" android:text="@string/perm_write_title" />
+                <TextView style="@style/PermDesc" android:text="@string/perm_write_desc" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnWrite"
+                style="@style/PermButton"
+                android:text="@string/perm_grant" />
+        </LinearLayout>
+
+        <!-- Notification permission -->
+        <LinearLayout
+            android:id="@+id/cardNotif"
+            style="@style/PermCard">
+
+            <LinearLayout style="@style/PermTextWrap">
+                <TextView style="@style/PermTitle" android:text="@string/perm_notif_title" />
+                <TextView style="@style/PermDesc" android:text="@string/perm_notif_desc" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnNotif"
+                style="@style/PermButton"
+                android:text="@string/perm_grant" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="@string/status_stopped"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnToggleService"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_button"
+            android:text="@string/enable_panel"
+            android:textColor="@color/panel_background"
+            android:textStyle="bold"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+</ScrollView>

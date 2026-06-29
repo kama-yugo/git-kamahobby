@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Galaxy Quick Panel</string>
+
+    <!-- Onboarding / main screen -->
+    <string name="main_title">Galaxy クイックパネル</string>
+    <string name="main_subtitle">画面上部から引き下ろして使う、One UI 風のクイックパネル</string>
+
+    <string name="perm_overlay_title">他のアプリの上に表示</string>
+    <string name="perm_overlay_desc">パネルを画面に重ねて表示するために必要です</string>
+    <string name="perm_write_title">システム設定の変更</string>
+    <string name="perm_write_desc">画面の明るさ・自動回転を切り替えるために必要です</string>
+    <string name="perm_notif_title">通知の表示</string>
+    <string name="perm_notif_desc">常駐サービスの通知を表示するために必要です</string>
+
+    <string name="perm_granted">許可済み</string>
+    <string name="perm_grant">許可する</string>
+
+    <string name="enable_panel">クイックパネルを有効にする</string>
+    <string name="disable_panel">クイックパネルを停止する</string>
+    <string name="status_running">クイックパネルは動作中です。画面上部の端を下にスワイプしてください。</string>
+    <string name="status_stopped">クイックパネルは停止しています。</string>
+    <string name="need_permissions">先に上記の権限をすべて許可してください。</string>
+
+    <!-- Service notification -->
+    <string name="notif_channel_name">クイックパネル常駐</string>
+    <string name="notif_title">Galaxy クイックパネル 起動中</string>
+    <string name="notif_text">画面上部の端を下にスワイプしてパネルを開きます</string>
+
+    <!-- Tiles -->
+    <string name="tile_wifi">Wi-Fi</string>
+    <string name="tile_bluetooth">Bluetooth</string>
+    <string name="tile_flashlight">ライト</string>
+    <string name="tile_rotate">自動回転</string>
+    <string name="tile_airplane">機内モード</string>
+    <string name="tile_sound">サウンド</string>
+    <string name="tile_mobiledata">モバイルデータ</string>
+    <string name="tile_location">位置情報</string>
+
+    <string name="brightness">明るさ</string>
+    <string name="media_volume">メディア音量</string>
+    <string name="settings">設定</string>
+</resources>

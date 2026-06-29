@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/tileIcon"
+        android:layout_width="@dimen/tile_size"
+        android:layout_height="@dimen/tile_size"
+        android:padding="15dp"
+        android:background="@drawable/bg_tile_off"
+        android:src="@drawable/ic_wifi"
+        app:tint="@color/tile_icon_off"
+        android:contentDescription="@string/tile_wifi" />
+
+    <TextView
+        android:id="@+id/tileLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:maxLines="1"
+        android:text="@string/tile_wifi"
+        android:textColor="@color/text_primary"
+        android:textSize="12sp" />
+</LinearLayout>

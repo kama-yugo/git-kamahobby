@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/panelContent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_panel"
+    android:paddingStart="@dimen/panel_padding"
+    android:paddingEnd="@dimen/panel_padding"
+    android:paddingTop="16dp"
+    android:paddingBottom="8dp"
+    android:elevation="12dp">
+
+    <!-- Header: clock + settings -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/clockText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:textColor="@color/text_primary"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/settingsButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_settings"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/text_secondary"
+            android:contentDescription="@string/settings" />
+    </LinearLayout>
+
+    <!-- Tiles grid (filled programmatically) -->
+    <GridLayout
+        android:id="@+id/tileGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:useDefaultMargins="false"
+        android:paddingBottom="8dp" />
+
+    <!-- Brightness -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="12dp">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_brightness"
+            app:tint="@color/text_secondary"
+            android:contentDescription="@string/brightness" />
+
+        <SeekBar
+            android:id="@+id/brightnessSeek"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:max="255"
+            android:progressTint="@color/accent_blue"
+            android:thumbTint="@color/accent_blue"
+            android:progressBackgroundTint="@color/slider_track" />
+    </LinearLayout>
+
+    <!-- Media volume -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="4dp">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_sound"
+            app:tint="@color/text_secondary"
+            android:contentDescription="@string/media_volume" />
+
+        <SeekBar
+            android:id="@+id/volumeSeek"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:progressTint="@color/accent_blue"
+            android:thumbTint="@color/accent_blue"
+            android:progressBackgroundTint="@color/slider_track" />
+    </LinearLayout>
+
+    <!-- Drag handle -->
+    <View
+        android:layout_width="42dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/handle" />
+
+</LinearLayout>
