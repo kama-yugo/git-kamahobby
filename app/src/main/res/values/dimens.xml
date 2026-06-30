@@ -4,5 +4,5 @@
     <dimen name="tile_corner">28dp</dimen>
     <dimen name="tile_size">56dp</dimen>
     <dimen name="panel_padding">20dp</dimen>
-    <dimen name="trigger_height">28dp</dimen>
+    <dimen name="trigger_height">48dp</dimen>
 </resources>

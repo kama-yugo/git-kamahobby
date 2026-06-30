@@ -40,7 +40,14 @@ class QuickPanelService : Service() {
         Prefs(this).serviceEnabled = true
     }
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int = START_STICKY
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        // Tapping the notification (or its action) opens the panel directly —
+        // a reliable trigger that doesn't depend on the status-bar swipe.
+        if (intent?.action == ACTION_OPEN_PANEL) {
+            controller?.open()
+        }
+        return START_STICKY
+    }
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -52,7 +59,12 @@ class QuickPanelService : Service() {
 
     private fun buildNotification(): Notification {
         createChannel()
-        val pending = PendingIntent.getActivity(
+        val openPanel = PendingIntent.getService(
+            this, 1,
+            Intent(this, QuickPanelService::class.java).setAction(ACTION_OPEN_PANEL),
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+        val openApp = PendingIntent.getActivity(
             this, 0,
             Intent(this, MainActivity::class.java),
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
@@ -61,7 +73,9 @@ class QuickPanelService : Service() {
             .setContentTitle(getString(R.string.notif_title))
             .setContentText(getString(R.string.notif_text))
             .setSmallIcon(R.drawable.ic_panel)
-            .setContentIntent(pending)
+            .setContentIntent(openPanel) // tap the notification to open the panel
+            .addAction(R.drawable.ic_panel, getString(R.string.notif_open_panel), openPanel)
+            .addAction(R.drawable.ic_settings, getString(R.string.notif_open_settings), openApp)
             .setOngoing(true)
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .build()
@@ -80,6 +94,7 @@ class QuickPanelService : Service() {
     companion object {
         private const val CHANNEL_ID = "quick_panel_service"
         private const val NOTIF_ID = 1001
+        const val ACTION_OPEN_PANEL = "com.kama.galaxyquickpanel.OPEN_PANEL"
 
         fun start(context: Context) {
             val intent = Intent(context, QuickPanelService::class.java)

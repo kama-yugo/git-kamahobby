@@ -33,7 +33,9 @@
     <!-- Service notification -->
     <string name="notif_channel_name">クイックパネル常駐</string>
     <string name="notif_title">Galaxy クイックパネル 起動中</string>
-    <string name="notif_text">画面上部の端を下にスワイプしてパネルを開きます</string>
+    <string name="notif_text">タップ、または画面上部の端を下にスワイプしてパネルを開きます</string>
+    <string name="notif_open_panel">パネルを開く</string>
+    <string name="notif_open_settings">設定</string>
 
     <!-- Tiles -->
     <string name="tile_wifi">Wi-Fi</string>

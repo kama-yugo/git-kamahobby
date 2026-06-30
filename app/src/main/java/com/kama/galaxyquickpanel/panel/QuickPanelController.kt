@@ -66,7 +66,11 @@ class QuickPanelController(private val context: Context) {
             PixelFormat.TRANSLUCENT
         ).apply {
             gravity = Gravity.TOP
-            y = 0
+            // The very top edge is owned by the system status bar (which sits
+            // above app overlays), so a strip at y=0 never sees the swipe.
+            // Drop it just below the status bar where it can actually receive
+            // touches.
+            y = statusBarHeight()
         }
         view.setOnTouchListener(PullDownListener { open() })
         windowManager.addView(view, params)
@@ -230,6 +234,13 @@ class QuickPanelController(private val context: Context) {
         else
             @Suppress("DEPRECATION")
             WindowManager.LayoutParams.TYPE_PHONE
+
+    private fun statusBarHeight(): Int {
+        val res = context.resources
+        val id = res.getIdentifier("status_bar_height", "dimen", "android")
+        return if (id > 0) res.getDimensionPixelSize(id)
+        else (24 * res.displayMetrics.density).toInt()
+    }
 
     /** Detects a downward swipe on the trigger strip and opens the panel. */
     private class PullDownListener(private val onPull: () -> Unit) : View.OnTouchListener {
