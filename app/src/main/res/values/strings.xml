@@ -22,6 +22,12 @@
     <string name="status_stopped">クイックパネルは停止しています。</string>
     <string name="need_permissions">先に上記の権限をすべて許可してください。</string>
     <string name="overlay_manual_hint">設定 → アプリ → Galaxy Quick Panel →「他のアプリの上に表示」を手動で許可してください。</string>
+
+    <!-- Android 13+ restricted settings guidance -->
+    <string name="restricted_title">制限付き設定の解除が必要です</string>
+    <string name="restricted_message">Android 13 以降では、ストア外から入れたアプリの「他のアプリの上に表示」はそのままでは ON にできません（トグルがグレーアウト）。\n\n次の手順で解除してください：\n1. 「アプリ情報を開く」をタップ\n2. 右上の ⋮ メニュー →「制限付き設定を許可」\n3. 戻って「他のアプリの上に表示」を ON\n\nすでに解除済みの場合は「権限画面へ」から直接設定できます。</string>
+    <string name="restricted_open_appinfo">アプリ情報を開く</string>
+    <string name="restricted_open_overlay">権限画面へ</string>
     <string name="write_manual_hint">設定 → アプリ → Galaxy Quick Panel →「システム設定の変更」を手動で許可してください。</string>
 
     <!-- Service notification -->
