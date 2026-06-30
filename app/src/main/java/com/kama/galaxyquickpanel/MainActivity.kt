@@ -1,6 +1,7 @@
 package com.kama.galaxyquickpanel
 
 import android.Manifest
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -42,21 +43,54 @@ class MainActivity : AppCompatActivity() {
 
     // region Permission requests ------------------------------------------
     private fun requestOverlay() {
-        startActivity(
+        if (Permissions.canDrawOverlays(this)) return
+        // OEM ROMs vary: some don't resolve the package-scoped intent, some only
+        // open the global list. Try the most specific screen first, then fall
+        // back, and finally guide the user to do it by hand.
+        val opened = startFirstResolvable(
             Intent(
                 Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                 Uri.parse("package:$packageName")
-            )
+            ),
+            Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION),
+            appDetailsIntent()
         )
+        if (!opened) {
+            Toast.makeText(this, R.string.overlay_manual_hint, Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun requestWriteSettings() {
-        startActivity(
+        if (Permissions.canWriteSettings(this)) return
+        val opened = startFirstResolvable(
             Intent(
                 Settings.ACTION_MANAGE_WRITE_SETTINGS,
                 Uri.parse("package:$packageName")
-            )
+            ),
+            Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS),
+            appDetailsIntent()
         )
+        if (!opened) {
+            Toast.makeText(this, R.string.write_manual_hint, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun appDetailsIntent() = Intent(
+        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+        Uri.parse("package:$packageName")
+    )
+
+    /** Launches the first intent that an Activity can actually handle. */
+    private fun startFirstResolvable(vararg intents: Intent): Boolean {
+        for (intent in intents) {
+            try {
+                startActivity(intent)
+                return true
+            } catch (_: ActivityNotFoundException) {
+                // try the next fallback
+            }
+        }
+        return false
     }
 
     private fun requestNotifications() {

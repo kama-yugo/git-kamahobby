@@ -21,6 +21,8 @@
     <string name="status_running">クイックパネルは動作中です。画面上部の端を下にスワイプしてください。</string>
     <string name="status_stopped">クイックパネルは停止しています。</string>
     <string name="need_permissions">先に上記の権限をすべて許可してください。</string>
+    <string name="overlay_manual_hint">設定 → アプリ → Galaxy Quick Panel →「他のアプリの上に表示」を手動で許可してください。</string>
+    <string name="write_manual_hint">設定 → アプリ → Galaxy Quick Panel →「システム設定の変更」を手動で許可してください。</string>
 
     <!-- Service notification -->
     <string name="notif_channel_name">クイックパネル常駐</string>
