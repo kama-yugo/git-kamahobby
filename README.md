@@ -46,6 +46,25 @@ echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 - targetSdk / compileSdk: 34 (Android 14)
 - 言語: Kotlin / View Binding
 
+### VSCode で開発する
+
+`.vscode/` に推奨拡張とビルドタスクを同梱しています。
+
+1. リポジトリを VSCode で開くと推奨拡張のインストールを促されます
+   （Gradle for Java / Kotlin など）。
+2. **Ctrl/Cmd + Shift + B** で `Gradle: assembleDebug` が走ります。
+   その他のタスクは **Ctrl/Cmd + Shift + P → 「Tasks: Run Task」** から:
+   - `Gradle: installDebug` … 接続中の端末/エミュレータへインストール
+   - `App: install & launch` … インストール後にアプリを起動（`adb` が PATH に必要）
+   - `Gradle: clean`
+3. 事前に Android SDK を導入し、リポジトリ直下の `local.properties` に
+   `sdk.dir=...` を記述しておいてください（`ANDROID_HOME` でも可）。`adb` を
+   使うタスクは Android SDK の `platform-tools` に PATH を通しておきます。
+
+> 注: VSCode は Android Studio のような GUI レイアウトエディタ／エミュレータ管理は
+> 持たないため、エミュレータの作成・起動は Android Studio か `avdmanager` /
+> `emulator` コマンドで行ってください。
+
 ## プロジェクト構成
 
 ```

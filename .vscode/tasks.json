@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Gradle: assembleDebug",
+      "detail": "デバッグAPKをビルド (app/build/outputs/apk/debug/app-debug.apk)",
+      "type": "shell",
+      "command": "./gradlew",
+      "args": ["assembleDebug"],
+      "windows": { "command": ".\\gradlew.bat" },
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Gradle: installDebug",
+      "detail": "接続中の端末/エミュレータにインストール",
+      "type": "shell",
+      "command": "./gradlew",
+      "args": ["installDebug"],
+      "windows": { "command": ".\\gradlew.bat" },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Gradle: clean",
+      "type": "shell",
+      "command": "./gradlew",
+      "args": ["clean"],
+      "windows": { "command": ".\\gradlew.bat" },
+      "problemMatcher": []
+    },
+    {
+      "label": "App: install & launch",
+      "detail": "インストールしてアプリを起動",
+      "type": "shell",
+      "command": "adb",
+      "args": [
+        "shell", "am", "start", "-n",
+        "com.kama.galaxyquickpanel/.MainActivity"
+      ],
+      "dependsOn": ["Gradle: installDebug"],
+      "problemMatcher": []
+    }
+  ]
+}
