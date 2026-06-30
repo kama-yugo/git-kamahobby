@@ -11,7 +11,9 @@ class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
         if (intent?.action != Intent.ACTION_BOOT_COMPLETED) return
         if (Prefs(context).serviceEnabled && Permissions.canDrawOverlays(context)) {
-            QuickPanelService.start(context)
+            // Starting a specialUse FGS from boot can be rejected on some OEM
+            // builds; swallow it so the receiver never crashes.
+            runCatching { QuickPanelService.start(context) }
         }
     }
 }

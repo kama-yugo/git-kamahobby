@@ -38,7 +38,7 @@
                 <TextView style="@style/PermDesc" android:text="@string/perm_overlay_desc" />
             </LinearLayout>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnOverlay"
                 style="@style/PermButton"
                 android:text="@string/perm_grant" />
@@ -54,7 +54,7 @@
                 <TextView style="@style/PermDesc" android:text="@string/perm_write_desc" />
             </LinearLayout>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnWrite"
                 style="@style/PermButton"
                 android:text="@string/perm_grant" />
@@ -70,7 +70,7 @@
                 <TextView style="@style/PermDesc" android:text="@string/perm_notif_desc" />
             </LinearLayout>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnNotif"
                 style="@style/PermButton"
                 android:text="@string/perm_grant" />
@@ -90,7 +90,7 @@
             android:textColor="@color/text_secondary"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnToggleService"
             android:layout_width="match_parent"
             android:layout_height="56dp"

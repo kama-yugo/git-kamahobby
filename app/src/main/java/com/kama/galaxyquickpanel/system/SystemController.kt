@@ -27,10 +27,12 @@ class SystemController(private val context: Context) {
     // region Flashlight ---------------------------------------------------
     private var torchOn = false
     private val torchCameraId: String? by lazy {
-        cameraManager?.cameraIdList?.firstOrNull { id ->
-            cameraManager.getCameraCharacteristics(id)
-                .get(android.hardware.camera2.CameraCharacteristics.FLASH_INFO_AVAILABLE) == true
-        }
+        runCatching {
+            cameraManager?.cameraIdList?.firstOrNull { id ->
+                cameraManager.getCameraCharacteristics(id)
+                    .get(android.hardware.camera2.CameraCharacteristics.FLASH_INFO_AVAILABLE) == true
+            }
+        }.getOrNull()
     }
 
     fun isFlashlightOn(): Boolean = torchOn
